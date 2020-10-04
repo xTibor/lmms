@@ -1140,10 +1140,10 @@ void MainWindow::updateViewMenu()
 		);
 
 	m_viewMenu->addSeparator();
-	
+
 	m_viewMenu->addAction(embed::getIconPixmap( "fullscreen" ),
 				tr( "Fullscreen" ) + "\tF11",
-				this, SLOT( toggleFullscreen() ) 
+				this, SLOT( toggleFullscreen() )
 		);
 
 	m_viewMenu->addSeparator();
@@ -1624,6 +1624,8 @@ void MainWindow::onImportProject()
 	{
 		FileDialog ofd( nullptr, tr( "Import file" ),
 				ConfigManager::inst()->userProjectsDir(),
+				tr("Module files") +
+				" (*.mod);;" +
 				tr("MIDI sequences") +
 				" (*.mid *.midi *.rmi);;" +
 				tr("Hydrogen projects") +

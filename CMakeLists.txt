@@ -62,6 +62,7 @@ OPTION(WANT_LV2		"Include Lv2 plugins" ON)
 OPTION(WANT_SUIL	"Include SUIL for LV2 plugin UIs" ON)
 OPTION(WANT_MP3LAME	"Include MP3/Lame support" ON)
 OPTION(WANT_OGGVORBIS	"Include OGG/Vorbis support" ON)
+OPTION(WANT_OPENMPT		"Include OpenMPT plugin" ON)
 OPTION(WANT_PULSEAUDIO	"Include PulseAudio support" ON)
 OPTION(WANT_PORTAUDIO	"Include PortAudio support" ON)
 OPTION(WANT_SNDIO	"Include sndio support" ON)
@@ -475,6 +476,17 @@ IF(WANT_SF2)
 	ENDIF(FLUIDSYNTH_FOUND)
 ENDIF(WANT_SF2)
 
+# check for OpenMPT
+IF(WANT_OPENMPT)
+	PKG_CHECK_MODULES(OPENMPT libopenmpt)
+	IF(OPENMPT_FOUND)
+		SET(LMMS_HAVE_OPENMPT TRUE)
+		SET(STATUS_OPENMPT "OK")
+	ELSE(OPENMPT_FOUND)
+		SET(STATUS_OPENMPT "not found, libopenmpt-dev (or similar)")
+	ENDIF(OPENMPT_FOUND)
+ENDIF(WANT_OPENMPT)
+
 # check for libgig
 If(WANT_GIG)
 	PKG_CHECK_MODULES(GIG gig)
@@ -748,6 +760,7 @@ MESSAGE(
 "* TAP LADSPA plugins          : ${STATUS_TAP}\n"
 "* SWH LADSPA plugins          : ${STATUS_SWH}\n"
 "* GIG player                  : ${STATUS_GIG}\n"
+"* OpenMPT import              : ${STATUS_OPENMPT}\n"
 )
 
 MESSAGE(
