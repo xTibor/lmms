@@ -1625,7 +1625,7 @@ void MainWindow::onImportProject()
 		FileDialog ofd( nullptr, tr( "Import file" ),
 				ConfigManager::inst()->userProjectsDir(),
 				tr("Module files") +
-				" (*.mod);;" +
+				" (*.mptm *.mod *.s3m *.xm *.it);;" +
 				tr("MIDI sequences") +
 				" (*.mid *.midi *.rmi);;" +
 				tr("Hydrogen projects") +
